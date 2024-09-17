@@ -41,3 +41,40 @@ document.getElementById("post-button").addEventListener("click", function(){
     
     
 })
+
+//More events-click,mouseover,mouseout,mousemove,mouseenter,mouseleave
+document.getElementById("btn-more").addEventListener("click", function(){
+    console.log("btn-more-click");
+    document.getElementById("text-field").value=''
+
+})
+
+document.getElementById('text-field').addEventListener('focus',function(){
+    console.log("Focused-inside the text field");
+})
+document.getElementById('text-field').addEventListener('blur',function(){
+    console.log("Blurred-inside the input field");
+})
+document.getElementById('text-field').addEventListener('keyup',function(events){
+    const textHere=document.getElementById("text-here");
+   textHere.innerText=events.target.value;
+})
+
+//Delete 
+document.getElementById('delete-field').addEventListener('keyup',function(events){
+    deleteConfirm=events.target.value;
+    console.log(deleteConfirm);
+    const deleteBtn=document.getElementById("delete-btn");
+    if(deleteConfirm.toLowerCase() === 'delete'){
+        deleteBtn.removeAttribute('disabled');
+    }
+    else{
+        deleteBtn.setAttribute('disabled', true);
+    }
+})
+
+document.getElementById('delete-btn').addEventListener('click',function(){
+  document.getElementById('secret-text').innerText='';
+})
+
+//Toggle
