@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<!-- <style>
+    body{
+        border: 2px solid red;
+    }
+    #list-container{
+        border: 2px solid blue;
+        padding: 10px;
+    }
+    #add-list{
+        border:  2px solid palevioletred;
+    }
+    #item-2{
+        border: 2px solid magenta;
+    }
+</style> -->
+
 <body>
+
     <h2>Document Objecr Model Events</h2>
     <h3 id="input-text-shown">Default input text is showing</h3>
     <input type="text" placeholder="Input text..." id="input-text">
@@ -16,29 +34,100 @@
     <button onclick="incrementPink()" title="Click me">Click me for pink</button>
     <button title="Click me" id="make-blue">Click me for steelble</button>
     <section id="comment-field">
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam dolorum modi deleniti numquam autem maiores provident aspernatur voluptas nisi alias.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam saepe sapiente quas. Eveniet nemo consequuntur minus rerum veritatis quis inventore!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla animi quos harum pariatur cupiditate sint sit fuga molestias saepe repellat?</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam dolorum modi deleniti numquam autem
+            maiores provident aspernatur voluptas nisi alias.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam saepe sapiente quas. Eveniet nemo
+            consequuntur minus rerum veritatis quis inventore!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla animi quos harum pariatur cupiditate sint sit
+            fuga molestias saepe repellat?</p>
 
     </section>
-    <textarea name="" id="comment-text" cols="50" rows="5"></textarea> 
+    <textarea name="" id="comment-text" cols="50" rows="5"></textarea>
     <br>
     <button id="post-button">Post</button>
     <section>
         <h2>Explore More events...</h2>
         <div id="text-added">
-        <p id="text-here">New Text here...</p>
-    </div>
+            <p id="text-here">New Text here...</p>
+        </div>
         <input type="text" id="text-field">
         <button id="btn-more">Events</button>
     </section>
     <section>
         <h2>Secret Text is here</h2>
-        <p id="secret-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dignissimos autem culpa iste! Officia ut harum quisquam praesentium voluptatem quae.</p>
+        <p id="secret-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dignissimos autem culpa
+            iste! Officia ut harum quisquam praesentium voluptatem quae.</p>
         <input type="text" id="delete-field">
         <button id="delete-btn" disabled>Delete</button>
     </section>
 
+
+    <section id="list-container">
+        <h1>Explore event bubble</h1>
+        <ul id="add-list">
+            <li id="item-1">item-1</li>
+            <li id="item-2">item-2</li>
+            <li id="item-3">item-3</li>
+            <li id="item-4">item-4</li>
+        </ul>
+    </section>
+
+    <section id="list-items-container">
+        <ul id="list-items">
+            <li class="items">Lorem ipsum dolor sit amet.</li>
+            <li class="items">Enim iure perferendis modi architecto?</li>
+            <li class="items">Blanditiis optio iste vel non!</li>
+            <li class="items">Blanditiis repellendus architecto atque distinctio!</li>
+            <li class="items">Ipsam veniam corrupti dignissimos laboriosam.</li>
+            <li class="items">Incidunt a reprehenderit doloribus alias!</li>
+        </ul>
+        <button id="add-item">Add items</button>
+    </section>
+    <script>
+        // const items = document.getElementsByClassName("items");
+        // for(const item of items) {
+        //     item.addEventListener("click", function (event) {
+        //         event.target.parentNode.removeChild(event.target);
+
+        //     });
+
+        // }
+        document.getElementById('list-items-container').addEventListener("click", function (event) {
+            event.target.parentNode.removeChild(event.target);
+        })
+
+        document.getElementById("add-item").addEventListener("click",function(event){
+            const li=document.createElement("li");
+            li.innerText="New item added successfully.";
+            li.classList.add("items");
+            document.getElementById("list-items").appendChild(li);
+            
+        })
+
+
+
+
+
+        document.getElementById("item-2").addEventListener("click", function (event) {
+            console.log("item-2 clicked");
+            // event.stopPropagation();
+            event.stopImmediatePropagation();
+        })
+
+        document.getElementById("add-list").addEventListener("click", function () {
+            console.log("add list clicked");
+        })
+
+        document.getElementById("list-container").addEventListener("click", function () {
+            console.log("Section container clicked");
+        });
+        document.body.addEventListener("click", function () {
+            console.log("Body clicked");
+        });
+
+    </script>
+
     <script src="./js/events.js"></script>
 </body>
+
 </html>
